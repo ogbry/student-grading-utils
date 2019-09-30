@@ -20,10 +20,8 @@ WORKDIR /student-grading-utils
 COPY . /student-grading-utils
 COPY package.json /student-grading-utils
 RUN npm install
-# RUN npm i --production
 
-RUN npm install puppeteer-core chrome-aws-lambda --save-prod
-RUN npm install puppeteer@1.11.0 --save-dev
+RUN npm install --save puppeteer@1.11.0
 
 
 VOLUME /student-grading-utils
