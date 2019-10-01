@@ -33,6 +33,9 @@ while [[ $# -gt 0 ]]
 
 cd "${BASH_SOURCE%/*}" || exit
 
+[ ! -d "$output_dir" ] && mkdir -p "$output_dir"
+[ ! -d "$tmpdir" ] && mkdir -p "$tmpdir"
+
 errcho "Repos will be output to $output_dir"
 
 # Download submissions
@@ -47,4 +50,6 @@ errcho "Repos will be output to $output_dir"
   --directories "$output_dir" \
   --submissions "$submissions"
 
-# TODO: Empty folder command 
+# TODO: Empty folder command
+Runreset="$execfile"
+("$Runreset")

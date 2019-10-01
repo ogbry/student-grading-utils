@@ -38,6 +38,9 @@ while [[ $# -gt 0 ]]
 
 cd "${BASH_SOURCE%/*}" || exit
 
+[ ! -d "$output_dir" ] && mkdir -p "$output_dir"
+[ ! -d "$tmpdir" ] && mkdir -p "$tmpdir"
+
 errcho "Repos will be output to $output_dir"
 
 ../utils/downloadPullRequestRepos.js \
@@ -51,3 +54,6 @@ errcho "Repos will be output to $output_dir"
   --reference "$reference_image"
 
 # TODO: Empty folder command 
+Runreset="$execfile"
+("$Runreset")
+

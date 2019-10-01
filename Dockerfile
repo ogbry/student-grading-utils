@@ -1,3 +1,4 @@
+# Using ubuntu as image
 FROM ubuntu
 
 RUN apt-get update && apt-get install -yq libgconf-2-4
@@ -20,16 +21,16 @@ WORKDIR /student-grading-utils
 COPY . /student-grading-utils
 COPY package.json /student-grading-utils
 RUN npm install
+# RUN npm i --production
 
-RUN npm install --save puppeteer@1.11.0
+RUN npm install puppeteer-core chrome-aws-lambda --save-prod
+RUN npm install puppeteer@1.11.0 --save-dev
 
 
 VOLUME /student-grading-utils
 
-
 ADD ${reference_image} .
 COPY /bin/$checker /bin/
 CMD chmod +x bin/$checker
-
 
 ENTRYPOINT ./bin/$checker
